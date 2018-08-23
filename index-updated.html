@@ -24,8 +24,9 @@
     <script type="text/babel">
 
         //FriendLy Component Code -------------------------------------
+		//This is the main function which generates the cards. It has calls to the other functions
         function FriendLy(props) {
-
+			// Styling -------------------
             var friendlyStyle = {
                 display:'inline-block',
                 margin:15,
@@ -35,7 +36,7 @@
                 WebkitFilter: "drop-shadow(0px 0px 5px #555)",
                 filter: "drop-shadow(0px 0px 5px #555)"
             }
-
+			// End of Styling ----------------------
             return(
                 <div style={friendlyStyle}>
                     <Avatar imgProfile={props.profile.img}/>
@@ -46,8 +47,9 @@
             );
         }
 
-        // Avatar Component Code
+        // This shows the Avatar of the person
         function Avatar(props) {
+			// Styling -------------------
             var avatarStyle = {
                 width: 180,
                 height: 170,
@@ -57,16 +59,18 @@
                 WebkitFilter: "drop-shadow(0px 0px 1px #f2f2f2)",
                 filter: "drop-shadow(0px 0px 1px #f2f2f2)"
             }
-
+			// End of Styling ----------------------
+			
             return(
                 <img src={props.imgProfile} style={avatarStyle}/>
             );
         }
 
-        // UserName Component Code
+        // This shows the Name of the person
         class UserName extends React.Component{
             render() {
 
+				// Styling -------------------
                 var userNameContainerStyle =   {
                     textAlign:"center",
                     height:50
@@ -77,6 +81,8 @@
                     textTransform: "uppercase",
                     color:"#003380"
                 }
+				// End of Styling ----------------------
+				
                 return(
                     <div style={userNameContainerStyle}>
                         <h1 style={userNameTextStyle}>{this.props.name}</h1>
@@ -85,10 +91,11 @@
             }
         }
 
-        //StatusUpdate Component Code
+        //This shows the Status Update section
         class StatusUpdate extends React.Component {
             render() {
 
+				// Styling -------------------
                 var statusUpdateTextStyle = {
                     fontFamily: "Archivo,sans-serif",
                     fontSize:12,
@@ -107,6 +114,8 @@
                     textAlign:"center"
 
                 }
+				// End of Styling ----------------------
+				
                 return(
                     <div style={statusUpdateContainerStyle}>
                         <span style={statusUpdateTextStyle}>{this.props.statusUpdate}</span>
@@ -116,7 +125,7 @@
 
         }
         
-	//GetConnected Component Code
+		//This function gets called to generate the 3 icons - Like, Share and AddMe
         function GetConnected() {
             return(
                 <div>
@@ -127,7 +136,7 @@
             );
         }
 
-        //Like Component Code
+        //This shows the like button
         function Like(){
             var iconLikeStyle = {
                 marginLeft:40,
@@ -138,7 +147,7 @@
 
         }
 
-	//Share Component Code
+		//This displays the Share button
         function Share(){
 
             var iconShareStyle = {
@@ -151,7 +160,7 @@
             );
         }
 
-        //AddMe Component
+        //This displays the AddMe button
         function AddMe(){
             var iconAddMeStyle = {
                 //marginLeft:20,
@@ -162,6 +171,8 @@
         }
         // End of FriendLy Functions --------------------
 
+		
+	// This is the array of users that we'll generate the profile card for	
 	var friendLyUsers = [
 		
 	{
