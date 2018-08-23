@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie-edge">
+    <!-- REACT LIBRARY -->
+    <script src="https://unpkg.com/react@15.5.4/dist/react.js"></script>
+    <!-- REACT DOM LIBRARY -->
+    <script src="https://unpkg.com/react-dom@15.5.4/dist/react-dom.js"></script>
+    <!-- BABEL LIBRARY -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+    <!-- FONT AWESOME LIBRARY -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <!-- GOOGLE FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Cardo:400,700|Oswald" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Archivo:500|Open+Sans:300,700" rel="stylesheet">
+
+    <title>FriendLy</title>
+
+    <!-- THIS IS THE REACT CONTENT, WHERE REACT WILL BE RENDERED -->
+    <div id="app">This hasn't been rendered by React</div>
+    <!-- JAVASCRIPT -->
+    <script type="text/babel">
+
+        //FriendLy Component Code -------------------------------------
+        function FriendLy(props) {
+
+            var friendlyStyle = {
+                display:'inline-block',
+                margin:15,
+                width:250,
+                height:400,
+                backgroundColor: props.profile['background color'],
+                WebkitFilter: "drop-shadow(0px 0px 5px #555)",
+                filter: "drop-shadow(0px 0px 5px #555)"
+            }
+
+            return(
+                <div style={friendlyStyle}>
+                    <Avatar imgProfile={props.profile.img}/>
+                    <UserName name={props.profile.name}/>
+                    <StatusUpdate statusUpdate={props.profile.statusText}/>
+                    <GetConnected/>
+                </div>
+            );
+        }
+
+        // Avatar Component Code
+        function Avatar(props) {
+            var avatarStyle = {
+                width: 180,
+                height: 170,
+                marginLeft: 35,
+                marginTop: 25,
+                borderRadius: "50%",
+                WebkitFilter: "drop-shadow(0px 0px 1px #f2f2f2)",
+                filter: "drop-shadow(0px 0px 1px #f2f2f2)"
+            }
+
+            return(
+                <img src={props.imgProfile} style={avatarStyle}/>
+            );
+        }
+
+        // UserName Component Code
+        class UserName extends React.Component{
+            render() {
+
+                var userNameContainerStyle =   {
+                    textAlign:"center",
+                    height:50
+                }
+
+                var userNameTextStyle = {
+                    fontFamily: "Oswald",
+                    textTransform: "uppercase",
+                    color:"#003380"
+                }
+                return(
+                    <div style={userNameContainerStyle}>
+                        <h1 style={userNameTextStyle}>{this.props.name}</h1>
+                    </div>
+                );
+            }
+        }
+
+        //StatusUpdate Component Code
+        class StatusUpdate extends React.Component {
+            render() {
+
+                var statusUpdateTextStyle = {
+                    fontFamily: "Archivo,sans-serif",
+                    fontSize:12,
+                    textAlign:"center",
+                    color:"#595959",
+
+                }
+
+                var statusUpdateContainerStyle = {
+                    marginLeft:20,
+                    marginTop:0,
+                    marginBottom:40,
+                    marginRight:20,
+                    lineHeight:'15px',
+                    clear:"both",
+                    textAlign:"center"
+
+                }
+                return(
+                    <div style={statusUpdateContainerStyle}>
+                        <span style={statusUpdateTextStyle}>{this.props.statusUpdate}</span>
+                    </div>
+                );
+            }
+
+        }
+        
+	//GetConnected Component Code
+        function GetConnected() {
+            return(
+                <div>
+                    <Like/>
+                    <Share/>
+                    <AddMe/>
+                </div>
+            );
+        }
+
+        //Like Component Code
+        function Like(){
+            var iconLikeStyle = {
+                marginLeft:40,
+            }
+            return(
+                <i className="far fa-thumbs-up fa-2x" style={iconLikeStyle}></i>
+            );
+
+        }
+
+	//Share Component Code
+        function Share(){
+
+            var iconShareStyle = {
+                marginLeft:40,
+                marginRight:25
+            }
+
+            return (
+                <i className="fas fa-share-square fa-2x" style={iconShareStyle}></i>
+            );
+        }
+
+        //AddMe Component
+        function AddMe(){
+            var iconAddMeStyle = {
+                //marginLeft:20,
+            }
+            return (
+                <i className="fas fa-users fa-2x" style={iconAddMeStyle}></i>
+            );
+        }
+        // End of FriendLy Functions --------------------
+
+	var friendLyUsers = [
+		
+	{
+            name: 'Jane Doe',
+            statusText: 'Where are the people at today?!',
+            img:'https://static.pexels.com/photos/509195/pexels-photo-509195.jpeg',
+            'background color':'#fff2e6'
+        },
+
+        {
+            name: 'Mary Jane',
+            statusText: 'I\'ve had too much to eat.',
+            img: 'https://pbs.twimg.com/profile_images/699422966556168193/zUm4vhAo.jpg',
+            'background color':'#e6ffff'
+        },
+
+        {
+            name: 'John Smith',
+            statusText: 'Blah.',
+            img: 'https://static.pexels.com/photos/509195/pexels-photo-509195.jpeg',
+            'background color':'#fff2e6'
+        },
+
+        {
+            name: 'Crazy Lady',
+            statusText: 'No. Just. No....',
+            img: 'https://static.pexels.com/photos/509195/pexels-photo-509195.jpeg',
+            'background color':'#fff2e6'
+        },
+
+        {
+            name: 'Lore Ippsu',
+            statusText: 'Director of Loren',
+            img: 'https://static.pexels.com/photos/509195/pexels-photo-509195.jpeg',
+            'background color':'#fff2e6'
+        }];
+
+	//For loop to build the function calls automatically so that I don't have to type it out manually xD 
+	//Googled why the for loop wasn't working and came across someone's solution to use the map function to iterate through the array listings
+	//Because the map function is within the return tag, they escaped this with a curly bracket
+	
+	function FriendLyFunctionCall() {
+	return(
+		<div>
+			{friendLyUsers.map(function(x) { 
+					return(<FriendLy profile={x}/>);
+				})
+			}
+			</div>);
+						
+	}
+		
+        ReactDOM.render(
+            <div>
+			    <FriendLyFunctionCall />			
+            </div>,
+            document.getElementById("app")
+        );
+    </script>
+</head>
+<body></body>
+</html>
